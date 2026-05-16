@@ -70,7 +70,7 @@ class ContactApiTest extends TestCase
 
         $response = $this->deleteJson("/api/contacts/{$contact->id}");
 
-        $response->assertOk();
+        $response->assertNoContent(); 
         $this->assertSoftDeleted('contacts', ['id' => $contact->id]);
     }
 
