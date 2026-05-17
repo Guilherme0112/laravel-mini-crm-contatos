@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('BROADCAST_DRIVER', 'null'),
+    'default' => env('BROADCAST_CONNECTION', 'reverb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,6 +63,20 @@ return [
 
         'null' => [
             'driver' => 'null',
+        ],
+
+        'reverb' => [
+            'driver' => 'reverb',
+            'host' => env('REVERB_HOST'),
+            'port' => env('REVERB_PORT', 8080),
+            'app_id' => env('VITE_PUSHER_APP_ID'),
+            'key' => env('VITE_PUSHER_APP_KEY'),
+            'secret' => env('REVERB_APP_SECRET'),
+            'options' => [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'encrypted' => true,
+                'scheme' => 'https',
+            ],
         ],
 
     ],

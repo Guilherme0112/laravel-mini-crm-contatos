@@ -16,9 +16,12 @@ class ContactScoreProcessed implements ShouldBroadcast
     {
     }
 
-    public function broadcastOn(): Channel
+    public function broadcastOn(): array
     {
-        return new Channel('contacts.' . $this->contact->getId());
+        return [
+            new Channel('contacts.' . $this->contact->getId()),
+            new Channel('contacts'),
+        ];
     }
 
     public function broadcastWith(): array

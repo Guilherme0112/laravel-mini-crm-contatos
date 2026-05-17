@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -64,8 +54,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
 # Desafio Técnico – Mini CRM de Contatos (DDD & TDD)
 
 Este desafio tem como objetivo avaliar suas habilidades avançadas em engenharia de software, design de arquitetura e fluência no ecossistema Laravel. 
@@ -140,6 +128,36 @@ Esperamos que sua solução se afaste do padrão clássico MVC "fat-controller /
 | **Validação e Saída** | Use **Form Requests** para validação de entrada (HTTP) e **API Resources** para padronizar o JSON de saída. |
 | **Queue & Broadcast** | Use **Redis** para a fila e **Laravel Reverb** para o WebSocket. Inclua um exemplo simples (HTML/JS) no `README` de como escutar o canal. |
 
+### Exemplo de WebSocket (HTML/JS)
+
+Você pode encontrar uma interface completa para monitorar eventos em tempo real no arquivo `resources/views/welcome.blade.php`.
+Abaixo está um exemplo básico em JS de como se inscrever em um canal específico para um contato:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/8.3.0/pusher.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/laravel-echo@1.16.1/dist/echo.iife.js"></script>
+
+<script>
+    const echo = new window.Echo({
+        broadcaster: 'pusher',
+        key: 'app-key', // Substitua pela sua PUSHER_APP_KEY
+        wsHost: '127.0.0.1',
+        wsPort: 6001,
+        forceTLS: false,
+        disableStats: true,
+        enabledTransports: ['ws', 'wss'],
+    });
+
+    // Substitua o {id} pelo ID do contato desejado
+    const contactId = 1;
+    echo.channel(`contacts.${contactId}`)
+        .listen('.ContactScoreProcessed', (contact) => {
+            console.log('Score processado!', contact);
+            alert(`O contato ${contact.name} agora possui score ${contact.score} e status ${contact.status}.`);
+        });
+</script>
+```
+
 ---
 
 ## 3. Critérios de Avaliação
@@ -165,4 +183,3 @@ Avaliaremos severamente a qualidade do seu código, não apenas se a API "funcio
 5. **Prazo de entrega sugerido**: 7 dias. Foque na qualidade da arquitetura e dos testes, mesmo que o escopo funcional não esteja 100% polido.
 
 Boa sorte 🚀
->>>>>>> dd32169cca1d28d61b34d3f382aaa672160736ba
