@@ -23,7 +23,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: minicrm_queue
-    command: php artisan queue:work redis --sleep=3 --tries=3
+    command: bash -c "while [ ! -f vendor/autoload.php ]; do echo 'Aguardando vendor...'; sleep 2; done; php artisan queue:work redis --sleep=3 --tries=3"
     volumes:
       - .:/var/www
     depends_on:

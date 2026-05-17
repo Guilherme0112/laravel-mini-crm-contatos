@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UpdateContactRequest extends FormRequest
 {
@@ -24,5 +26,13 @@ class UpdateContactRequest extends FormRequest
             ],
             'phone' => ['required', 'string', 'max:30'],
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'Os dados fornecidos são inválidos.',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }
