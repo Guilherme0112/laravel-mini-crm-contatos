@@ -15,11 +15,16 @@ A infraestrutura foi totalmente **dockerizada** para garantir que a aplicação 
 - **Docker** e **Docker Compose** instalados na máquina.
 - As portas `8000`, `5432`, `6379`, e `6001` devem estar livres.
 
-### 2. Clonando o Repositório
+### 2. Clonando o Repositório e Configurando Variáveis
 Faça o clone do projeto e entre na pasta raiz:
 ```bash
 git clone https://github.com/Guilherme0112/laravel-mini-crm-contatos.git
 cd laravel-mini-crm-contatos
+```
+
+Em seguida, crie o seu arquivo de ambiente copiando o arquivo de exemplo:
+```bash
+cp .env.example .env
 ```
 
 ### 3. Subindo o Ambiente (Docker Compose)
