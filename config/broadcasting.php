@@ -32,9 +32,9 @@ return [
 
         'pusher' => [
             'driver' => 'pusher',
-            'key' => env('PUSHER_APP_KEY'),
-            'secret' => env('PUSHER_APP_SECRET'),
-            'app_id' => env('PUSHER_APP_ID'),
+            'key' => env('PUSHER_APP_KEY', 'default-key'),
+            'secret' => env('PUSHER_APP_SECRET', 'default-secret'),
+            'app_id' => env('PUSHER_APP_ID', 'default-app-id'),
             'options' => [
                 'host' => env('PUSHER_HOST') ?: 'api-'.env('PUSHER_APP_CLUSTER', 'mt1').'.pusher.com',
                 'port' => env('PUSHER_PORT', 443),
@@ -69,9 +69,9 @@ return [
             'driver' => 'reverb',
             'host' => env('REVERB_HOST'),
             'port' => env('REVERB_PORT', 8080),
-            'app_id' => env('VITE_PUSHER_APP_ID'),
-            'key' => env('VITE_PUSHER_APP_KEY'),
-            'secret' => env('REVERB_APP_SECRET'),
+            'app_id' => env('VITE_PUSHER_APP_ID', 'default-app-id'),
+            'key' => env('VITE_PUSHER_APP_KEY', 'default-key'),
+            'secret' => env('REVERB_APP_SECRET', 'default-secret'),
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => true,
